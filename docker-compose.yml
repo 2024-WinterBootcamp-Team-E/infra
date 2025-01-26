@@ -11,7 +11,7 @@ services:
     env_file:
       - .env
 
- mongo:
+  mongo:
     container_name: mongo
     image: mongo:latest
     command: mongod --noauth  # 인증 비활성화 플래그 추가
@@ -26,4 +26,5 @@ networks:
     driver: bridge
 
 volumes:
-  mongodb_data:  # 최상위 레벨에 볼륨 정의 추가
+  mongodb_data:
+
