@@ -4,12 +4,12 @@ services:
     image: kimhongseok/fastapi-app:v1.0.35
     ports:
       - "8000:8000"
-    environment:
-      - MONGODB_URL=${MONGODB_URL}
     networks:
       - teamEnet
     depends_on:
       - mongo
+    env_file:
+      - .env
 
   mongo:
     container_name: mongo
@@ -18,6 +18,8 @@ services:
       - mongodb_data:/data/db  # 데이터 저장을 위한 볼륨 설정
     networks:
       - teamEnet
+    env_file:
+      - .env
 
 networks:
   teamEnet:
