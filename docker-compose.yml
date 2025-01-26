@@ -1,0 +1,27 @@
+services:
+  fastapi-server:
+    container_name: fastapi
+    image: kimhongseok/fastapi-app:v1.0.33
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGODB_URL=${MONGODB_URL}
+    networks:
+      - teamEnet
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db  # 데이터 저장을 위한 볼륨 설정
+    networks:
+      - teamEnet
+
+networks:
+  teamEnet:
+    driver: bridge
+
+volumes:
+  mongodb_data:  # 최상위 레벨에 볼륨 정의 추가
