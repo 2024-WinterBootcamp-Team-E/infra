@@ -14,7 +14,7 @@ services:
   mongo:
     container_name: mongo
     image: mongo:latest
-    command: mongod --noauth  # 인증 비활성화 플래그 추가
+    command: mongod --noauth  
     volumes:
       - mongodb_data:/data/db
     networks:
