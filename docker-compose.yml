@@ -1,7 +1,7 @@
 services:
   fastapi-server:
     container_name: fastapi
-    image: kimhongseok/fastapi-app:v1.0.2
+    image: kimhongseok/fastapi-app:v1.0.3
     ports:
       - "8000:8000"
     networks:
