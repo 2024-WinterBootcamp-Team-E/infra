@@ -34,6 +34,16 @@ jobs:
             docker-compose down || true
 
             docker-compose pull
+            
+      - name: Clean Up Files in Server
+        if: always()
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            rm -f /home/ubuntu/docker-compose.yml       
 
             docker-compose up -d
 
